@@ -13,21 +13,21 @@ public class Ticket {
     private String NombrePasajero;
     private double TotalPagado;
 
-    public Ticket(String passengerName, double totalPaid) {
-        this.NombrePasajero = passengerName;
-        this.TotalPagado = totalPaid;
+    public Ticket(String NombrePasajero, double totalPagado) {
+        this.NombrePasajero = NombrePasajero;
+        this.TotalPagado = totalPagado;
     }
 
-    public String getPassengerName() {
+    public String getNombrePasajero() {
         return NombrePasajero;
     }
 
-    public double getTotalPaid() {
+    public double getTotalPagado() {
         return TotalPagado;
     }
 
     public void print() {
-        System.out.println("Passenger Name: " + NombrePasajero + ", Total Paid: $" + TotalPagado);
+        System.out.println("Nombre del Pasajero: " + NombrePasajero + ", Total Pagado: $" + TotalPagado);
     }
 }
 
