@@ -17,7 +17,7 @@ public class VenderTicket extends javax.swing.JFrame {
    
     public VenderTicket(Ticket[] AsientoExternos, PalindromoAir ClaseExterno) {
         Asiento = AsientoExternos != null ? AsientoExternos : new Ticket[30];
-        Funcion = ClaseExterno;
+        Funcion = ClaseExterno != null ? ClaseExterno : new PalindromoAir();
     
         initComponents();
     }
@@ -53,7 +53,7 @@ public class VenderTicket extends javax.swing.JFrame {
         Nombre_Textbox.setBackground(new java.awt.Color(255, 255, 255));
         Nombre_Textbox.setForeground(new java.awt.Color(0, 0, 0));
         Nombre_Textbox.setText("Nombre");
-        getContentPane().add(Nombre_Textbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 190, 30));
+        getContentPane().add(Nombre_Textbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 190, 30));
 
         Vender_Button.setBackground(new java.awt.Color(50, 50, 200));
         Vender_Button.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -70,7 +70,7 @@ public class VenderTicket extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("NOMBRE: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 90, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 90, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MenuVender.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 380));
@@ -81,13 +81,12 @@ public class VenderTicket extends javax.swing.JFrame {
     private void Vender_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Vender_ButtonActionPerformed
         
         String name = Nombre_Textbox.getText();
-        
         Funcion.sellTicket(name);
            
     }//GEN-LAST:event_Vender_ButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MainMenu pasar = new MainMenu(null,null);
+        MainMenu pasar = new MainMenu(Asiento,this.Funcion);
         pasar.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -122,7 +121,7 @@ public class VenderTicket extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VenderTicket(null,null).setVisible(true);
+                new VenderTicket(new Ticket[30], new PalindromoAir()).setVisible(true);
             }
         });
     }

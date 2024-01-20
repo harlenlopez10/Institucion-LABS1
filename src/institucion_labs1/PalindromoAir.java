@@ -50,34 +50,37 @@ public class PalindromoAir {
         return searchPassengerRecursiva(name, index + 1); 
     }
 
-    private static boolean isPalindromo(String palabra, int posInicio, int posFin) {
-        if (posFin >= posInicio) {
-            if (palabra.charAt(posInicio)==palabra.charAt(posFin)) {
-                return isPalindromo(palabra,posInicio+1,posFin-1);
-            }
-            return false;
+private static boolean isPalindromo(String palabra, int posInicio, int posFin) {
+    if (posFin >= posInicio) {
+        char charInicio = Character.toLowerCase(palabra.charAt(posInicio));
+        char charFin = Character.toLowerCase(palabra.charAt(posFin));
+
+        if (charInicio == charFin) {
+            return isPalindromo(palabra, posInicio + 1, posFin - 1);
         }
-        return true;
+        return false;
     }
+    return true;
+}
 
     public static boolean isPalindromo(String palabra) {
         return isPalindromo(palabra, 0, palabra.length() - 1);
     }
 
-    private void printPassengersRecursiva(StringBuilder infoPasajeros, int index) {
-        if (index < Asiento.length) {
-            if (Asiento[index] != null) {
-                infoPasajeros.append(Asiento[index].getNombrePasajero()).append(" - $. ").append(Asiento[index].getTotalPagado()).append("\n");
-            }
-            printPassengersRecursiva(infoPasajeros, index + 1);
+  private void printPassengersRecursiva(StringBuilder infoPasajeros, int index) {
+    if (index < Asiento.length) {
+        if (Asiento[index] != null) {
+            infoPasajeros.append(Asiento[index].getNombrePasajero()).append(" - $. ").append(Asiento[index].getTotalPagado()).append("\n");
         }
+        printPassengersRecursiva(infoPasajeros, index + 1);
     }
+}
 
-    public String printPassengers() {
-        StringBuilder passengersInfo = new StringBuilder();
-        printPassengersRecursiva(passengersInfo, 0);
-        return passengersInfo.toString();
-    }
+public String printPassengers() {
+    StringBuilder passengersInfo = new StringBuilder();
+    printPassengersRecursiva(passengersInfo, 0);
+    return passengersInfo.toString();
+}
 
     public double income() {
         return incomeRecursiva(0);
@@ -109,19 +112,24 @@ public class PalindromoAir {
     public void sellTicket(String name) {
         int porcentaje = 0;
         int indexDisponible = firstAvailable();
-        
+
         if (indexDisponible == -1) {
-            JOptionPane.showMessageDialog(null,"Lo siento, no hay asientos disponible");
+            JOptionPane.showMessageDialog(null, "Lo siento, no hay asientos disponibles.");
+            
         } else {
             
             double ticketPrice = 800.0;
-            
-            if (isPalindromo(name)==true) {
-                porcentaje=20;
-                ticketPrice = ticketPrice-(ticketPrice*porcentaje);
+
+            if (isPalindromo(name)) {
+                porcentaje = 20;
+                ticketPrice = ticketPrice - (ticketPrice * porcentaje / 100);
             }
+
             Asiento[indexDisponible] = new Ticket(name, ticketPrice);
-             JOptionPane.showMessageDialog(null, "Descuento aplicado: " + porcentaje + "\nComprador: " + name + "\nCompra Exitosa");
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Descuento aplicado: " + porcentaje + "%\nComprador: " + name + "\nTotal a pagar: "+ticketPrice+"\nCompra Exitosa."
+            );
         }
     }
 

@@ -18,6 +18,8 @@ public class ListaPasajeros extends javax.swing.JFrame {
         Funcion = ClaseExterno;
     
         initComponents();
+        
+        Listado.setText(Funcion.printPassengers());
     }
 
     /**
@@ -27,7 +29,6 @@ public class ListaPasajeros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Lista_Button = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Listado = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
@@ -36,23 +37,12 @@ public class ListaPasajeros extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Lista_Button.setBackground(new java.awt.Color(50, 50, 200));
-        Lista_Button.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Lista_Button.setForeground(new java.awt.Color(255, 255, 255));
-        Lista_Button.setText("MOSTRAR");
-        Lista_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Lista_ButtonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Lista_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 200, 40));
-
         Listado.setEditable(false);
         Listado.setBackground(new java.awt.Color(255, 255, 255));
         Listado.setForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(Listado);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 450, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 450, 230));
 
         jButton1.setBackground(new java.awt.Color(50, 50, 200));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -70,13 +60,6 @@ public class ListaPasajeros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Lista_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Lista_ButtonActionPerformed
-
-        
-        Listado.setText(Funcion.printPassengers());
-
-    }//GEN-LAST:event_Lista_ButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MainMenu pasar = new MainMenu(null,null);
@@ -114,13 +97,12 @@ public class ListaPasajeros extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaPasajeros(null,null).setVisible(true);
+                new ListaPasajeros(new Ticket[30], new PalindromoAir()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Lista_Button;
     private javax.swing.JTextPane Listado;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

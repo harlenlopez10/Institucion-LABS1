@@ -12,12 +12,12 @@ import javax.swing.JOptionPane;
  */
 public class CancelarTicket extends javax.swing.JFrame {
 
-private PalindromoAir Funcion;
+    private PalindromoAir Funcion;
     private Ticket[] Asiento;
    
     public CancelarTicket(Ticket[] AsientoExternos, PalindromoAir ClaseExterno) {
         Asiento = AsientoExternos != null ? AsientoExternos : new Ticket[30];
-        Funcion = ClaseExterno;
+        Funcion = ClaseExterno != null ? ClaseExterno : new PalindromoAir();
     
         initComponents();
     }
@@ -34,8 +34,6 @@ private PalindromoAir Funcion;
         jLabel2 = new javax.swing.JLabel();
         Nombre_Textbox = new javax.swing.JTextField();
         Cancelar_Button = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Info = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -46,7 +44,7 @@ private PalindromoAir Funcion;
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("NOMBRE: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, -1, -1));
 
         Nombre_Textbox.setBackground(new java.awt.Color(255, 255, 255));
         Nombre_Textbox.setForeground(new java.awt.Color(0, 0, 0));
@@ -56,7 +54,7 @@ private PalindromoAir Funcion;
                 Nombre_TextboxActionPerformed(evt);
             }
         });
-        getContentPane().add(Nombre_Textbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 170, -1));
+        getContentPane().add(Nombre_Textbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 170, -1));
 
         Cancelar_Button.setBackground(new java.awt.Color(50, 50, 200));
         Cancelar_Button.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -67,14 +65,7 @@ private PalindromoAir Funcion;
                 Cancelar_ButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(Cancelar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 150, -1));
-
-        Info.setEditable(false);
-        Info.setBackground(new java.awt.Color(255, 255, 255));
-        Info.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(Info);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 280, 170));
+        getContentPane().add(Cancelar_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 150, -1));
 
         jButton1.setBackground(new java.awt.Color(50, 50, 200));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -84,7 +75,7 @@ private PalindromoAir Funcion;
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 350, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MenuCancelar.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 390));
@@ -105,7 +96,7 @@ private PalindromoAir Funcion;
         if (cancelar) {
             JOptionPane.showMessageDialog(null, "¡Su ticket fue cancelado correctamente!", "Cancelación Exitosa", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "Pasajero no encontrado. Por favor, verificarel nombre.", "Cancelación Fallida", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Pasajero no encontrado. Por favor, verificar el nombre.", "Cancelación Fallida", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Cancelar_ButtonActionPerformed
 
@@ -145,18 +136,16 @@ private PalindromoAir Funcion;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CancelarTicket(null,null).setVisible(true);
+                new CancelarTicket(new Ticket[30], new PalindromoAir()).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Cancelar_Button;
-    private javax.swing.JTextPane Info;
     private javax.swing.JTextField Nombre_Textbox;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
